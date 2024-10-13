@@ -1,10 +1,29 @@
+<?php 
+include "../config/main.php";
+
+if (isset($_POST['submit'])){
+    $username = $_POST['username'];
+    $password = $_POST['password']; 
+    $email = $_POST['email'];
+    $user_role = 'user';
+    $sql = "INSERT INTO email_log (email, username, password, role) VALUES ('$email','$username', '$password', '$user_role')";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        header("location: accueil.php"); 
+    } else {
+        echo "<p style='color: red;'><strong>Erreur lors de l'inscription :</strong> " . mysqli_error($conn) . "</p>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="stylesheet" href="../../public/css/register.css">
 </head>
 <body>
     <div class="register-container">

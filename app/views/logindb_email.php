@@ -1,6 +1,6 @@
 <?php
 
-include "main.php";
+include "../config/main.php";
 
 $myusername = $_POST['usr'];
 $mypassword = $_POST['pwd'];
@@ -17,7 +17,7 @@ $count = mysqli_num_rows($result);
 if ($count == 1) {
     $row = mysqli_fetch_assoc($result);
     
-    if (password_verify($mypassword, $row['password'])) {
+    if ($mypassword == $row['password']) {
         $insert_query = "INSERT INTO logs_connexion (user_id, username) VALUES ('{$row['id']}', '{$row['username']}')";
         mysqli_query($conn, $insert_query);
         
@@ -29,7 +29,7 @@ if ($count == 1) {
         if ($row['role'] == 'admin') {
             header("location: admin_logs.php"); 
         } else {
-            header("location: quizz.php"); 
+            header("location: accueil.php"); 
         }
     } else {
         echo "<p style='color: red; text-align: center;'>Nom d'utilisateur ou mot de passe incorrect</p>";
@@ -39,4 +39,4 @@ if ($count == 1) {
 }
 
 mysqli_close($conn);
-?>
+

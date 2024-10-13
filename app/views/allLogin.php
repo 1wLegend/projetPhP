@@ -1,5 +1,5 @@
 <?php
-require_once 'db-conn.php';  
+require_once __DIR__ . '/../config/main.php';
 
 if (isset($_SESSION['user_token'])) {
   header("Location: quizz.php");
@@ -14,7 +14,7 @@ if (isset($_SESSION['user_token'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yllusion Roleplay</title>
-    <link rel="stylesheet" href="assets/css/allLogin.css">
+    <link rel="stylesheet" href="../../public/css/allLogin.css">
 </head>
 
 <body>

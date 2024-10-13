@@ -28,16 +28,19 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #ffffff;
+    background-color: #121212; 
 }
 
 .middle-box {
-    background-color: #2B2B2B;
+    background-color: #1e1e1e; 
     border-radius: 10px;
     padding: 10%;
     width: 40%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 2px solid #3a3a3a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     height: 25%;
+    position: relative;
 }
 
 .middle-box-title-page {
@@ -54,7 +57,7 @@ ul {
     margin: 0;
     padding: 0;
     width: 15%;
-    background-color: #3d3c3c;
+    background-color: #1e1e1e;  
     height: 100vh;
     position: fixed;
     top: 0;
@@ -64,29 +67,31 @@ ul {
 
 ul li {
     padding: 15px 20px;
-    text-align: left;
+    width: 100%;
+    display: flex;
 }
 
 ul li a {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #dad8d9;
     text-decoration: none;
-    text-align: center;
     padding: 5%;
+    width: 100%;
 }
 
 ul li a:hover {
-    color: rgb(66, 3, 50);
+    color: #a150e8;
     text-decoration: underline;
 }
 
 ul img {
     height: 50px;
     width: 90px;
-    margin-top: 20px;
-    position: relative;
-    left: 32%;
+    margin-top: 26px;
     transition: transform 1.0s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ul img:hover {
@@ -100,7 +105,7 @@ ul img:hover {
 }
 
 .fa-solid:hover {
-    color: rgb(66, 3, 50);
+    color: #a150e8;
 }
 
 .bottom-page {
@@ -113,13 +118,13 @@ ul img:hover {
 }
 
 .line {
-    border: 2.5px solid #660559;
-    width: 99%;
+    border: 2.5px solid #a150e8;
+    width: 110%;
     margin-top: 10px;
 }
 
 .separation-deux-nav {
-    color: #161616;
+    color: #a150e8;
     padding-left: 3%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -142,13 +147,13 @@ ul img:hover {
 
 .fa-solid.fa-moon {
     font-size: 20px;
-    color: #570449;
+    color: #a150e8;
     margin: 10px;
     transition: color 0.3s ease;
 }
 
 .fa-regular.fa-moon:hover {
-    color: rgb(66, 3, 50);
+    color: #a150e8;
 }
 
 .navbartopjustevatar {
@@ -156,7 +161,7 @@ ul img:hover {
     justify-content: space-between;
     padding: 10px;
     padding-top: 17px;
-    background-color: #3d3c3c;
+    background-color: #1e1e1e; 
     width: calc(100% - 16%);
     position: fixed;
     right: 0;
@@ -190,7 +195,13 @@ ul img:hover {
 }
 
 .navbartopjustevatar-content-logout a:hover {
-    color: rgb(66, 3, 50);
+    color: #a150e8;
+}
+
+.navbartopjustevatar-content-avatar p {
+    margin-left: 10px;
+    color: #dad8d9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .pageurl {

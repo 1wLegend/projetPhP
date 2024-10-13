@@ -1,11 +1,11 @@
 <?php
-require_once '../app/controllers/UserController.php';
-require_once '../app/config/config.php'; 
+require_once __DIR__ . '/app/controllers/UserController.php';
+require_once __DIR__ . '/app/config/db-conn.php';
 
 $db = new DbConn('localhost', 'root', '', 'yllusion-portal');
 $db->connect();
 
-$requestUri = $_SERVER['REQUEST_URI'];
+$requestUri = trim($_SERVER['REQUEST_URI'], '/');
 
 $userController = new UserController($db);
 
@@ -17,8 +17,10 @@ switch ($requestUri) {
             $userController->showRegister();  
         }
         break;
-
+    case 'projetPhP/test':
+        echo'HEY';
+        break;
     default:
-        echo "Page non trouvée."; 
+        echo "404 - Page non trouvée."; 
         break;
 }
