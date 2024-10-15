@@ -131,19 +131,8 @@ button {
     gap: 10px; 
 }
 
-.discord-btn {
+.email_loggin {
     background-color: #a314d3; 
-    margin-right: 70px; 
-}
-
-.google-btn {
-    background-color: #a314d3; 
-}
-
-.discord-btn svg,
-.google-btn svg{
-    width: 25px;
-    height: 25px;
 }
 
 footer {

@@ -10,7 +10,7 @@ if (isset($_POST['submit'])){
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        header("location: accueil.php"); 
+        header("location: login.php"); 
     } else {
         echo "<p style='color: red;'><strong>Erreur lors de l'inscription :</strong> " . mysqli_error($conn) . "</p>";
     }
@@ -43,7 +43,10 @@ if (isset($_POST['submit'])){
             
             <input type="submit" name="submit" value="S'inscrire" class="submit-btn">
         </form>
+        <br>
+        <a href="allLogin.php" class="menu-btn">Menu de connexion</a>
         <p>Déjà un compte ? <a href="login.php" class="login-link">Se connecter</a></p>
+        
     </div>
 </body>
 </html>
