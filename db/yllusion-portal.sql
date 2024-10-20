@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 11 oct. 2024 à 15:38
+-- Généré le : sam. 19 oct. 2024 à 18:22
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -24,24 +24,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `discord_login`
---
-
-CREATE TABLE `discord_login` (
-  `id` int(11) NOT NULL,
-  `discord_id` varchar(255) NOT NULL,
-  `discord_avatar` varchar(255) NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `email_log`
 --
 
 CREATE TABLE `email_log` (
-  `id` int(11) NOT NULL,
+  `emailLog_id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -53,29 +40,12 @@ CREATE TABLE `email_log` (
 -- Déchargement des données de la table `email_log`
 --
 
-INSERT INTO `email_log` (`id`, `email`, `username`, `password`, `picture`, `role`) VALUES
-(1, 'test@laposte.net', 'test', '$2y$10$1HUXtR7vtb/FcOkf5BerhOgrWaeux75UlSBuPvrD8QMULygGjBZhq', '', 'user'),
-(2, 'test2@laposte.net', 'test2', '$2y$10$tcRRU4/Jox2roPSZgx/Pe.x7nYBcLhO/X4GviR7u7se.SL6bLKrQ2', '', 'user'),
-(3, 'test5@laposte.net', 'test5', '$2y$10$QVGTm97mOPVWA6.ev.9kC.OQlTKuCbU1ZsID4ytZ8Mf7oLPg7pStS', '', 'user');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `google_login`
---
-
-CREATE TABLE `google_login` (
-  `id` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL DEFAULT '',
-  `first_name` varchar(50) NOT NULL DEFAULT '',
-  `last_name` varchar(50) NOT NULL DEFAULT '',
-  `gender` varchar(50) NOT NULL DEFAULT '',
-  `full_name` varchar(100) NOT NULL DEFAULT '',
-  `picture` varchar(255) NOT NULL DEFAULT '',
-  `verifiedEmail` int(11) NOT NULL DEFAULT 0,
-  `token` varchar(255) NOT NULL DEFAULT '',
-  `role` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `email_log` (`emailLog_id`, `email`, `username`, `password`, `picture`, `role`) VALUES
+(25, 'JsuiGayOuQuoi?@gmail.com', 'test', 'aze', '', 'user'),
+(26, 'JsuiGayOuQuoi?@gmail.com', 'aze', 'test', '', 'user'),
+(27, 'JsuiGayOuQuoi?@gmail.com', 'vvirtuose', 'test', 'vvirtuose671394413c1bd6.19393207.jpg', 'user'),
+(28, 'JsuiGayOuQuoi?@gmail.com', 'Legend', 'test', '', 'user'),
+(29, 'JsuiGayOuQuoi?@gmail.com', 'testtes', 'test', '', 'user');
 
 -- --------------------------------------------------------
 
@@ -84,7 +54,7 @@ CREATE TABLE `google_login` (
 --
 
 CREATE TABLE `logs_connexion` (
-  `id` int(11) NOT NULL,
+  `log_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `connexion_time` timestamp NOT NULL DEFAULT current_timestamp()
@@ -94,71 +64,90 @@ CREATE TABLE `logs_connexion` (
 -- Déchargement des données de la table `logs_connexion`
 --
 
-INSERT INTO `logs_connexion` (`id`, `user_id`, `username`, `connexion_time`) VALUES
-(1, 1, 'test', '2024-10-09 06:37:26'),
-(2, 1, 'test', '2024-10-09 06:43:05'),
-(3, 2, 'test2', '2024-10-09 07:39:01'),
-(4, 2, 'test2', '2024-10-09 07:58:20'),
-(5, 2, 'test2', '2024-10-09 07:59:30'),
-(6, 2, 'test2', '2024-10-09 08:03:47'),
-(7, 2, 'test2', '2024-10-09 08:04:22');
+INSERT INTO `logs_connexion` (`log_id`, `user_id`, `username`, `connexion_time`) VALUES
+(42, 25, 'test', '2024-10-19 11:09:14'),
+(43, 27, 'vvirtuose', '2024-10-19 11:13:08'),
+(44, 27, 'vvirtuose', '2024-10-19 11:14:38'),
+(45, 27, 'vvirtuose', '2024-10-19 11:25:57'),
+(46, 27, 'vvirtuose', '2024-10-19 11:26:15'),
+(47, 27, 'vvirtuose', '2024-10-19 11:26:35'),
+(48, 27, 'vvirtuose', '2024-10-19 11:52:36'),
+(49, 28, 'Legend', '2024-10-19 11:58:13'),
+(50, 27, 'vvirtuose', '2024-10-19 11:59:11'),
+(51, 25, 'test', '2024-10-19 11:59:23'),
+(52, 28, 'Legend', '2024-10-19 11:59:28'),
+(53, 27, 'vvirtuose', '2024-10-19 11:59:39'),
+(54, 28, 'Legend', '2024-10-19 11:59:44'),
+(55, 27, 'vvirtuose', '2024-10-19 12:44:56'),
+(58, 27, 'vvirtuose', '2024-10-19 14:49:44'),
+(59, 29, 'testtes', '2024-10-19 14:50:00'),
+(60, 27, 'vvirtuose', '2024-10-19 15:19:20'),
+(61, 27, 'vvirtuose', '2024-10-19 15:19:38');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `resumes`
+--
+
+CREATE TABLE `resumes` (
+  `cv_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `experience` text DEFAULT NULL,
+  `education` text DEFAULT NULL,
+  `skills` text DEFAULT NULL,
+  `style` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `discord_login`
---
-ALTER TABLE `discord_login`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Index pour la table `email_log`
 --
 ALTER TABLE `email_log`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `google_login`
---
-ALTER TABLE `google_login`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`emailLog_id`);
 
 --
 -- Index pour la table `logs_connexion`
 --
 ALTER TABLE `logs_connexion`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`log_id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Index pour la table `resumes`
+--
+ALTER TABLE `resumes`
+  ADD PRIMARY KEY (`cv_id`),
+  ADD KEY `fk_user_cv` (`user_id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT pour la table `discord_login`
---
-ALTER TABLE `discord_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT pour la table `email_log`
 --
 ALTER TABLE `email_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT pour la table `google_login`
---
-ALTER TABLE `google_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `emailLog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT pour la table `logs_connexion`
 --
 ALTER TABLE `logs_connexion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
+-- AUTO_INCREMENT pour la table `resumes`
+--
+ALTER TABLE `resumes`
+  MODIFY `cv_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
@@ -168,7 +157,13 @@ ALTER TABLE `logs_connexion`
 -- Contraintes pour la table `logs_connexion`
 --
 ALTER TABLE `logs_connexion`
-  ADD CONSTRAINT `logs_connexion_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `email_log` (`id`);
+  ADD CONSTRAINT `logs_connexion_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `email_log` (`emailLog_id`);
+
+--
+-- Contraintes pour la table `resumes`
+--
+ALTER TABLE `resumes`
+  ADD CONSTRAINT `fk_user_cv` FOREIGN KEY (`user_id`) REFERENCES `email_log` (`emailLog_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

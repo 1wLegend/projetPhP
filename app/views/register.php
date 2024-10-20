@@ -1,20 +1,8 @@
-<?php 
-include "../config/main.php";
+<?php
+require_once '../controllers/RegisterController.php';
 
-if (isset($_POST['submit'])){
-    $username = $_POST['username'];
-    $password = $_POST['password']; 
-    $email = $_POST['email'];
-    $user_role = 'user';
-    $sql = "INSERT INTO email_log (email, username, password, role) VALUES ('$email','$username', '$password', '$user_role')";
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        header("location: login.php"); 
-    } else {
-        echo "<p style='color: red;'><strong>Erreur lors de l'inscription :</strong> " . mysqli_error($conn) . "</p>";
-    }
-}
+$controller = new RegisterController();
+list($email_error, $username_error) = $controller->register();
 ?>
 
 <!DOCTYPE html>
@@ -28,25 +16,26 @@ if (isset($_POST['submit'])){
 <body>
     <div class="register-container">
         <h1>Inscription sur <span class="highlight">Yllusion</span></h1>
-        <form action="register.php" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
+            <?php if (!empty($email_error)) { echo "<span style='color: red;'>$email_error</span><br>"; } ?>
             <label for="email">Email :</label>
             <input type="email" name="email" id="email" required><br>
-            
-            <label for="username">Username :</label>
+
+            <?php if (!empty($username_error)) { echo "<span style='color: red;'>$username_error</span><br>"; } ?>
+            <label for="username">Nom d'utilisateur :</label>
             <input type="text" name="username" id="username" required><br>
 
-            <label for="password">Password :</label>
+            <label for="password">Mot de passe :</label>
             <input type="password" name="password" id="password" required><br>
 
-            <label for="picture">Image de profil (URL) :</label>
-            <input type="text" name="picture" id="picture"><br>
+            <label for="picture">Image de profil :</label>
+            <input type="file" name="picture" id="picture"><br> 
             
             <input type="submit" name="submit" value="S'inscrire" class="submit-btn">
         </form>
         <br>
         <a href="allLogin.php" class="menu-btn">Menu de connexion</a>
         <p>Déjà un compte ? <a href="login.php" class="login-link">Se connecter</a></p>
-        
     </div>
 </body>
 </html>

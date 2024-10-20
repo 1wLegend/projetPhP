@@ -59,4 +59,17 @@ class DbConn {
         }
         return false;
     }
+
+    public function prepare($sql) {
+        if ($this->conn === null) {
+            throw new Exception("Pas de connexion active à la base de données.");
+        }
+
+        $stmt = mysqli_prepare($this->conn, $sql);
+        if (!$stmt) {
+            throw new Exception("Erreur lors de la préparation de la requête : " . mysqli_error($this->conn));
+        }
+
+        return $stmt;
+    }
 }

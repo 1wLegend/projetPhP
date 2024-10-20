@@ -18,13 +18,19 @@ if ($count == 1) {
     $row = mysqli_fetch_assoc($result);
     
     if ($mypassword == $row['password']) {
-        $insert_query = "INSERT INTO logs_connexion (user_id, username) VALUES ('{$row['id']}', '{$row['username']}')";
+        $insert_query = "INSERT INTO logs_connexion (user_id, username) VALUES ('{$row['emailLog_id']}', '{$row['username']}')";
         mysqli_query($conn, $insert_query);
         
         session_start();
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $row['username'];
         $_SESSION['role'] = $row['role'];
+        $_SESSION['emailLog_id'] = $row['emailLog_id'];
+        
+        
+        if (!empty($row['picture'])) {
+            $_SESSION['picture'] = $row['picture'];
+        }
 
         if ($row['role'] == 'admin') {
             header("location: admin_logs.php"); 
@@ -39,4 +45,3 @@ if ($count == 1) {
 }
 
 mysqli_close($conn);
-
